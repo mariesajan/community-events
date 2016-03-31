@@ -1,0 +1,31 @@
+extends ../../../layouts/account
+
+block head
+  title #{title}
+
+
+block body
+    h1 #{title}
+    form(method='post',action='/events/addevent/')
+        input(type='hidden', name='_csrf', value='#{csrftoken}')
+        div.form-group
+            label Event Name:
+            input.form-control(type='text',name='eventname')
+        div.formgroup
+            label Event Description:
+            input.form-control(type='text',name='eventdesc')
+        div.form-group
+            label Venue:
+            input.form-control(type='text',name='venue')
+        div.formgroup
+            label Event Date:
+            input.form-control(type='date',name='eventdate')
+        div.form-group
+            label Start Time:
+            input.form-control(type='time',name='starttime')
+        div.form-group
+            label End Time:
+            input.form-control(type='time',name='endtime')
+            br
+        div.form-group
+          button.btn.btn-primary.btn-signup(type='submit') Create Event

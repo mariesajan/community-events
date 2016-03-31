@@ -1,0 +1,31 @@
+extends ../../../layouts/account
+
+block head
+  title #{title}
+
+
+block body
+    h1 #{title}
+    form(method='post',action='/events/addevent/update/#{event._id}')
+        input(type='hidden', name='_csrf', value='#{csrftoken}')
+        div.form-group
+            label Event Name:
+            input.form-control(type='text',name='eventname',value='#{event.eventName}',disabled='')
+        div.formgroup
+            label Event Description:
+            input.form-control(type='text',name='eventdesc',value='#{event.eventDescription}')
+        div.form-group
+            label Venue:
+            input.form-control(type='text',name='venue',value='#{event.venue}')
+        div.formgroup
+            label Event Date:
+            input.form-control(type='date',name='eventdate',value='#{event.eventDate}')
+        div.form-group
+            label Start Time:
+            input.form-control(type='time',name='starttime',value='#{event.startTime}')
+        div.formgroup
+            label End Time:
+            input.form-control(type='time',name='endtime',value='#{event.endTime}')
+            br
+        div.form-group
+          button.btn.btn-primary.btn-update(type='submit') Update Event

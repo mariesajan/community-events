@@ -1,0 +1,20 @@
+extends ../../../layouts/account
+
+block head
+  title #{data.eventName}
+
+block body
+    h1 #{data.eventName}
+
+    label --Posted by #{data.username}
+    ul
+        li Venue:  #{data.venue}
+        li Date: #{data.eventDate}
+        li Start Time: #{data.startTime}
+        li End Time: #{data.endTime}
+
+    label #{data.eventDescription}
+    br
+
+    i.fa.fa-arrow-circle-left
+    a(href='/events/myevents/') Go Back

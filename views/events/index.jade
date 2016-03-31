@@ -1,0 +1,20 @@
+extends ../../layouts/account
+
+block head
+  title My Events
+
+
+block body
+    div.page-header
+      h1 My Events
+      each event in data
+          div.row
+            div.col-sm-3
+              label #{event.eventName}
+            div.col-sm-3
+              i.fa.fa-pencil
+              a(href='/events/edit/#{event._id}')  Edit
+            div.col-sm-2
+              i.fa.fa-trash
+              a(href='/events/delete/#{event._id}')  Delete
+          br

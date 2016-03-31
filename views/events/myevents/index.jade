@@ -1,0 +1,24 @@
+extends ../../../layouts/account
+
+block head
+  title View Events
+
+
+block body
+    h1 View Events
+    br
+    br
+    !=messages()
+    form
+        each event in data
+            div.row
+              div.col-sm-3
+                 h4 #{event.eventName}
+                 label ---Posted By #{event.username}
+                 br
+                 label #{event.eventDescription}
+                 br
+                 a(href='/events/show/#{event._id}') Read More
+                 br
+                 br
+                 br

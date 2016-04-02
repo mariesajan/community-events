@@ -71,9 +71,13 @@ helmet(app);
 
 //response locals
 app.use(function(req, res, next) {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
+    // cookie need to be set if forgot password needs to be worked
+    res.cookie('_csrfToken', req.csrfToken());
+
+    // res.cookie('XSRF-TOKEN', req.csrfToken());
+    //set the csrfToken in the request to the response local parameter 
     res.locals.csrftoken = req.csrfToken();
-    //res.cookie('_csrfToken', req.csrfToken());
+
     console.log(
         'In app.use............after csrf token stmts......................'
     );

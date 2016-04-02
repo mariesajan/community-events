@@ -21,7 +21,6 @@ exports.show = function(req, res, next) {
 };
 
 exports.init = function(req, res, next) {
-    console.log('in init function /events/myevents/index.js');
     var filters = {};
     req.app.db.models.Event.pagedFind({
         filters: filters,
@@ -30,11 +29,18 @@ exports.init = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        console.log('The results are :');
-        console.log(results.data);
-        res.render('events/myevents/index', {
-            data: results.data
-        });
+        if(req.user){
+          console.log('Iam a user......................................................');
+          res.render('events/myevents/index', {
+              data: results.data
+          });
+        }else{
+          console.log('Iam not a user......................................................');
+          res.render('events/myevents/not_user_index', {
+              data: results.data
+          });
+        }
+
     });
 };
 

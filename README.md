@@ -16,7 +16,11 @@ dbname: comevents
 
 2. If you get permission denied error while cloning, add SSH key to your github account. Refer [here](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 
-3.  Replace package.json and /schema/User.js with that in repository
+3. Do the setup as mentioned in [Drywall README](https://github.com/jedireza/drywall)  
+
+4. Make sure to create database ``comevents`` in mongolab and enter the mongodb url in ``config.js``. To work the Email functionality, give email credentials in the ``config.js``. Also, connect to the mongolab before executing the commands in mongo shell.
+
+3. Replace with the repository files.
 
 4. Install grunt CLI and dependencies.
 
@@ -28,7 +32,7 @@ dbname: comevents
     ```
 5. Run
     ```
-    grunt
+    npm start
     ```
 
 6. Open [localhost:3000](localhost:3000).

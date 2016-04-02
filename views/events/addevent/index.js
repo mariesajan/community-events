@@ -40,16 +40,15 @@ exports.create = function(req, res, next) {
     var workflow = req.app.utility.workflow(req, res);
     console.log(' hellooo in create Event function+++++++++++++++++++++.');
     console.log(req.user.username);
-    console.log(req.body.eventname);
     workflow.on('validate', function() {
         console.log('in workflow validat');
         if (!req.body.eventname) {
-            workflow.outcome.errors.push(
-                'Please enter the event name:');
+            workflow.outcome.errors.push('Please enter the event name:');
             return workflow.emit('response');
         }
         workflow.emit('createEvent');
     });
+
     workflow.on('createEvent', function() {
         var fieldsToSet = {
             username: req.user.username,
@@ -75,6 +74,5 @@ exports.create = function(req, res, next) {
             res.redirect('/events/myevents/');
         });
     });
-
     workflow.emit('validate');
 };
